@@ -2,11 +2,23 @@
 // НОЧНОЙ СПЛАВ — общие скрипты сайта
 // =========================================================
 
-// Форма бронирования и заявка для корпоративов отправляются на email
-// через сервис приёма форм (Formspree и аналоги подключаются бесплатно за 2 минуты).
-// Замените FORM_ENDPOINT на свой адрес вида https://formspree.io/f/xxxxxxx
-const FORM_ENDPOINT = "https://formspree.io/f/REPLACE_WITH_YOUR_ID";
-const CONTACT_EMAIL = "info@nightsplav.ru";
+// Формы сайта (бронирование, корпоративная заявка, обратная связь) отправляются
+// напрямую в Telegram через Bot API — без бэкенда, прямо из браузера.
+const TELEGRAM_BOT_TOKEN = "8687001523:AAEVxZnCDPHY91bmURel4YzaQNmEShsRh0g";
+const TELEGRAM_CHAT_ID = "1559239267";
+const CONTACT_PHONE = "+7 968 989-69-96";
+
+const FORM_FIELD_LABELS = {
+  route: "Маршрут",
+  date: "Дата",
+  group_size: "Кол-во человек",
+  name: "Имя",
+  phone: "Телефон",
+  comment: "Комментарий",
+  company: "Компания",
+  contact: "Контакт",
+  message: "Сообщение",
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
@@ -175,12 +187,28 @@ async function handleFormSubmit(e, form) {
     submitBtn.textContent = "Отправляем...";
   }
 
+  const formName = form.dataset.formName || "Заявка с сайта";
+  const lines = [`Новая заявка: ${formName}`];
+
+  new FormData(form).forEach((value, key) => {
+    if (!value) return;
+    let displayValue = value;
+    const field = form.elements[key];
+    if (field && field.tagName === "SELECT") {
+      displayValue = field.options[field.selectedIndex].text;
+    }
+    lines.push(`${FORM_FIELD_LABELS[key] || key}: ${displayValue}`);
+  });
+
   try {
-    const response = await fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: { Accept: "application/json" },
-      body: new FormData(form),
-    });
+    const response = await fetch(
+      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ chat_id: TELEGRAM_CHAT_ID, text: lines.join("\n") }),
+      }
+    );
 
     if (response.ok) {
       form.reset();
@@ -190,7 +218,7 @@ async function handleFormSubmit(e, form) {
     }
   } catch (err) {
     alert(
-      `Не получилось отправить форму автоматически. Напишите нам напрямую: ${CONTACT_EMAIL}`
+      `Не получилось отправить заявку автоматически. Напишите нам напрямую: ${CONTACT_PHONE}`
     );
   } finally {
     if (submitBtn) {
