@@ -129,13 +129,22 @@ function initMobileNav() {
   const nav = document.querySelector(".mobile-nav");
   if (!burger || !nav) return;
 
+  const setOpen = (open) => {
+    nav.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open);
+    document.body.style.overflow = open ? "hidden" : "";
+  };
+
   burger.addEventListener("click", () => {
-    nav.classList.toggle("open");
-    burger.setAttribute("aria-expanded", nav.classList.contains("open"));
+    setOpen(!nav.classList.contains("open"));
   });
 
   nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => nav.classList.remove("open"));
+    link.addEventListener("click", () => setOpen(false));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
   });
 }
 
