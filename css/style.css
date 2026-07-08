@@ -306,7 +306,7 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); }
 .ph-wide{ aspect-ratio:16/9; min-height:0; }
 
 /* ---------- Media — реальные фото с кинематографичной обработкой ---------- */
-.media{ position:relative; overflow:hidden; border-radius:var(--radius); border:1px solid var(--border); }
+.media{ position:relative; overflow:hidden; border-radius:var(--radius); border:1px solid var(--border); min-width:0; min-height:0; }
 .media img, .media video{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.4s var(--ease); filter:saturate(1.04) contrast(1.03); }
 .media:hover img, .media:hover video{ transform:scale(1.06); }
 .media-tall{ aspect-ratio:4/5; }
@@ -348,6 +348,7 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); }
 
 /* ---------- Bento — асимметричная сетка вместо одинаковых 3 карточек ---------- */
 .bento{ display:grid; grid-template-columns:repeat(6,1fr); gap:18px; }
+.bento > *{ min-width:0; }
 .bento .tile-xl{ grid-column:span 4; aspect-ratio:auto; min-height:560px; }
 .bento .tile-sm{ grid-column:span 2; aspect-ratio:auto; min-height:270px; }
 @media(max-width:900px){
@@ -369,6 +370,7 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); }
 
 /* ---------- Sticky story — фото прилипает, текст едет мимо ---------- */
 .sticky-story{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+.sticky-story > *{ min-width:0; }
 .sticky-story .sticky-media{ position:sticky; top:110px; }
 @media(max-width:900px){ .sticky-story{ grid-template-columns:1fr; } .sticky-story .sticky-media{ position:relative; top:0; } }
 .story-block{ padding:60px 0; border-top:1px solid var(--border); }
@@ -377,6 +379,7 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); }
 
 /* ---------- Cards / grid ---------- */
 .grid{ display:grid; gap:26px; }
+.grid > *{ min-width:0; }
 .grid-3{ grid-template-columns:repeat(3,1fr); }
 .grid-2{ grid-template-columns:repeat(2,1fr); }
 .grid-4{ grid-template-columns:repeat(4,1fr); }
@@ -413,6 +416,7 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); }
 .stat span{ color:var(--text-faint); font-size:.85rem; text-transform:uppercase; letter-spacing:.05em; }
 @media(max-width:700px){
   .stats{ display:grid; grid-template-columns:1fr 1fr; gap:32px 20px; }
+  .stats > *{ min-width:0; }
   .stat b{ font-size:3rem; }
   .stat span{ font-size:.88rem; line-height:1.3; }
 }
@@ -429,6 +433,7 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); }
 /* ---------- Forms ---------- */
 .form{ display:flex; flex-direction:column; gap:18px; max-width:640px; }
 .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.form-row > *{ min-width:0; }
 @media(max-width:600px){ .form-row{ grid-template-columns:1fr; } }
 .field{ display:flex; flex-direction:column; gap:8px; }
 .field label{ font-size:.82rem; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); }
@@ -503,6 +508,7 @@ tbody tr:hover{ background:rgba(255,255,255,.02); }
 /* ---------- Footer ---------- */
 .site-footer{ background:var(--bg-alt); border-top:1px solid var(--border); padding:64px 0 30px; }
 .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px; }
+.footer-grid > *{ min-width:0; }
 @media(max-width:800px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
 @media(max-width:480px){ .footer-grid{ grid-template-columns:1fr; } }
 .footer-grid h4{ font-family:var(--font-display); letter-spacing:.05em; font-size:1rem; color:var(--text-faint); margin-bottom:16px; }
@@ -519,6 +525,7 @@ tbody tr:hover{ background:rgba(255,255,255,.02); }
 .flex{ display:flex; } .items-center{ align-items:center; } .gap-12{ gap:12px; }
 .text-dim{ color:var(--text-dim); }
 .two-col{ display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center; }
+.two-col > *{ min-width:0; }
 @media(max-width:900px){ .two-col{ grid-template-columns:1fr; gap:36px; } }
 .two-col.reverse{ grid-template-columns:.9fr 1.1fr; }
 @media(max-width:900px){ .two-col.reverse{ grid-template-columns:1fr; } }
