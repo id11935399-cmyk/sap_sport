@@ -259,8 +259,8 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); }
 
 /* ---------- Media — реальные фото с кинематографичной обработкой ---------- */
 .media{ position:relative; overflow:hidden; border-radius:var(--radius); border:1px solid var(--border); }
-.media img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.4s var(--ease); filter:saturate(1.04) contrast(1.03); }
-.media:hover img{ transform:scale(1.06); }
+.media img, .media video{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.4s var(--ease); filter:saturate(1.04) contrast(1.03); }
+.media:hover img, .media:hover video{ transform:scale(1.06); }
 .media-tall{ aspect-ratio:4/5; }
 .media-wide{ aspect-ratio:16/10; }
 .media-square{ aspect-ratio:1/1; }
