@@ -75,7 +75,9 @@ function initTapHaptics() {
     el.addEventListener(
       "touchstart",
       () => {
-        navigator.vibrate(8);
+        try {
+          navigator.vibrate(8);
+        } catch (e) {}
       },
       { passive: true }
     );
