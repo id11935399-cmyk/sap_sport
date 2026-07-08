@@ -178,12 +178,11 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); }
 .mobile-nav{
   position:fixed; inset:76px 0 0 0; background:var(--bg); z-index:99;
   padding:30px 24px; overflow-y:auto;
-  opacity:0; visibility:hidden; transform:translateY(-14px);
-  transition:opacity .32s var(--ease-soft), transform .32s var(--ease-soft), visibility 0s linear .32s;
+  opacity:0; transform:translateY(-14px); pointer-events:none;
+  transition:opacity .32s var(--ease-soft), transform .32s var(--ease-soft);
 }
 .mobile-nav.open{
-  opacity:1; visibility:visible; transform:translateY(0);
-  transition:opacity .32s var(--ease-soft), transform .32s var(--ease-soft), visibility 0s linear 0s;
+  opacity:1; transform:translateY(0); pointer-events:auto;
 }
 .mobile-nav a{
   display:block; padding:16px 0; font-family:var(--font-display); font-size:1.6rem; border-bottom:1px solid var(--border);
