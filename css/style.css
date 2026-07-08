@@ -41,6 +41,8 @@
 
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; overflow-x:hidden; }
+::selection{ background:var(--accent); color:#04140f; }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:2px; }
 body{
   position:relative;
   margin:0;
@@ -71,6 +73,23 @@ h2{ font-size:clamp(2.1rem,5vw,3.8rem); text-wrap:balance; }
 h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); text-wrap:balance; }
 .lead{ text-wrap:pretty; }
 
+/* ---------- Полоса прогресса скролла ---------- */
+.scroll-progress{
+  position:fixed; top:0; left:0; height:2px; width:0%; z-index:9998;
+  background:var(--accent); transform-origin:left; transition:width .1s linear;
+}
+
+/* ---------- Курсор-подсветка и лёгкий 3D-наклон на карточках (десктоп) ---------- */
+@media(hover:hover) and (pointer:fine){
+  .tile, .card{ --mx:50%; --my:50%; }
+  .tile::after, .card::after{
+    content:''; position:absolute; inset:0; z-index:3; pointer-events:none; opacity:0;
+    background:radial-gradient(280px circle at var(--mx) var(--my), rgba(43,233,220,.16), transparent 70%);
+    transition:opacity .3s var(--ease-soft);
+  }
+  .tile:hover::after, .card:hover::after{ opacity:1; }
+}
+
 /* ---------- Scroll reveal ---------- */
 [data-reveal]{ opacity:0; transform:translateY(28px); filter:blur(8px); transition:opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease); }
 [data-reveal].in{ opacity:1; transform:none; filter:blur(0); }
@@ -85,6 +104,18 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); text-wrap:balance; }
 @media(prefers-reduced-motion:reduce){
   ::view-transition-old(root), ::view-transition-new(root){ animation:none; }
 }
+
+/* ---------- Shared-element переходы: фото плитки "перетекает" в hero следующей страницы ---------- */
+::view-transition-group(*){ animation-duration:.5s; animation-timing-function:cubic-bezier(.4,0,.2,1); }
+.vt-nerskaya{ view-transition-name:vt-nerskaya; }
+.vt-serebryany-bor{ view-transition-name:vt-serebryany-bor; }
+.vt-serebryany-bor-night{ view-transition-name:vt-serebryany-bor-night; }
+.vt-zhivopisny-most{ view-transition-name:vt-zhivopisny-most; }
+.vt-zhivopisny-most-night{ view-transition-name:vt-zhivopisny-most-night; }
+.vt-serebryany-bor-loop{ view-transition-name:vt-serebryany-bor-loop; }
+.vt-arkhangelskoye{ view-transition-name:vt-arkhangelskoye; }
+.vt-arkhangelskoye-night{ view-transition-name:vt-arkhangelskoye-night; }
+.vt-night-photo-tour{ view-transition-name:vt-night-photo-tour; }
 
 /* ---------- Index labels (замена одинаковых eyebrow-бейджей) ---------- */
 .index-label{
@@ -177,28 +208,14 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); text-wrap:balance; }
 .burger[aria-expanded="true"] span:nth-child(3){ top:20px; transform:translateX(-50%) rotate(-45deg); }
 
 .mobile-nav{
-  position:fixed; inset:76px 0 0 0; background:var(--bg); z-index:99;
+  display:none;
+  position:fixed; inset:76px 0 0 0; background:var(--bg); z-index:9999;
   padding:30px 24px; overflow-y:auto;
-  opacity:0; transform:translateY(-14px); pointer-events:none;
-  transition:opacity .32s var(--ease-soft), transform .32s var(--ease-soft);
 }
-.mobile-nav.open{
-  opacity:1; transform:translateY(0); pointer-events:auto;
-}
+.mobile-nav.open{ display:block; }
 .mobile-nav a{
   display:block; padding:16px 0; font-family:var(--font-display); font-size:1.6rem; border-bottom:1px solid var(--border);
-  opacity:0; transform:translateY(10px); transition:opacity .3s var(--ease-soft), transform .3s var(--ease-soft);
 }
-.mobile-nav.open a{ opacity:1; transform:none; }
-.mobile-nav.open a:nth-child(1){ transition-delay:.04s; }
-.mobile-nav.open a:nth-child(2){ transition-delay:.08s; }
-.mobile-nav.open a:nth-child(3){ transition-delay:.12s; }
-.mobile-nav.open a:nth-child(4){ transition-delay:.16s; }
-.mobile-nav.open a:nth-child(5){ transition-delay:.2s; }
-.mobile-nav.open a:nth-child(6){ transition-delay:.24s; }
-.mobile-nav.open a:nth-child(7){ transition-delay:.28s; }
-.mobile-nav.open a:nth-child(8){ transition-delay:.32s; }
-.mobile-nav.open a:nth-child(9){ transition-delay:.36s; }
 .mobile-nav .cta-row{ margin-top:24px; }
 
 @media(max-width:900px){
@@ -388,6 +405,7 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); text-wrap:balance; }
 @media(max-width:640px){ .grid-3,.grid-4,.grid-2{ grid-template-columns:1fr; } }
 
 .card{
+  position:relative;
   background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
   overflow:hidden; display:flex; flex-direction:column; transition:border-color .2s, transform .2s;
   -webkit-tap-highlight-color:transparent;

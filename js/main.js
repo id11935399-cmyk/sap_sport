@@ -33,7 +33,45 @@ document.addEventListener("DOMContentLoaded", () => {
   initCountUp();
   initTapHaptics();
   initImageFade();
+  initScrollProgress();
+  initCardSpotlight();
 });
+
+// ---------- Полоса прогресса скролла ----------
+function initScrollProgress() {
+  const bar = document.createElement("div");
+  bar.className = "scroll-progress";
+  document.body.appendChild(bar);
+  const update = () => {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = max > 0 ? (scrolled / max) * 100 + "%" : "0%";
+  };
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+}
+
+// ---------- Курсор-подсветка + лёгкий наклон на карточках (десктоп) ----------
+function initCardSpotlight() {
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  document.querySelectorAll(".tile, .card").forEach((el) => {
+    el.addEventListener("mousemove", (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      el.style.setProperty("--mx", x + "px");
+      el.style.setProperty("--my", y + "px");
+      const rx = ((y / rect.height) - 0.5) * -4;
+      const ry = ((x / rect.width) - 0.5) * 4;
+      el.style.transform = `perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = "";
+    });
+  });
+}
 
 // ---------- Счётчики статистики — докручиваются вверх при попадании в экран ----------
 function initCountUp() {
