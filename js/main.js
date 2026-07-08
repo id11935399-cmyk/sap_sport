@@ -30,7 +30,73 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderScrollState();
   initHeroParallax();
   initMagneticButtons();
+  initCountUp();
+  initTapHaptics();
+  initImageFade();
 });
+
+// ---------- Счётчики статистики — докручиваются вверх при попадании в экран ----------
+function initCountUp() {
+  const stats = document.querySelectorAll(".stat b");
+  if (!stats.length || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        const el = entry.target;
+        const raw = el.textContent.trim();
+        const match = raw.match(/^(\d+)(.*)$/);
+        if (!match) return;
+        const target = parseInt(match[1], 10);
+        const suffix = match[2];
+        const duration = 1100;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    },
+    { threshold: 0.4 }
+  );
+  stats.forEach((el) => observer.observe(el));
+}
+
+// ---------- Лёгкая вибро-отдача на тап (Android) ----------
+function initTapHaptics() {
+  if (!("vibrate" in navigator)) return;
+  document.querySelectorAll(".btn, .tile, .burger").forEach((el) => {
+    el.addEventListener(
+      "touchstart",
+      () => {
+        navigator.vibrate(8);
+      },
+      { passive: true }
+    );
+  });
+}
+
+// ---------- Плавное появление фото после загрузки ----------
+function initImageFade() {
+  document.querySelectorAll(".media img, .tile img").forEach((img) => {
+    if (img.complete) return;
+    img.style.opacity = "0";
+    img.style.transition = "opacity .5s ease";
+    img.addEventListener(
+      "load",
+      () => {
+        img.style.opacity = "1";
+      },
+      { once: true }
+    );
+  });
+}
 
 // ---------- Scroll-reveal для [data-reveal] ----------
 function initScrollReveal() {
