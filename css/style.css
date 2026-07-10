@@ -469,6 +469,10 @@ h3{ font-size:clamp(1.4rem,2.6vw,1.9rem); text-wrap:balance; }
 .checkbox-row{ display:flex; align-items:flex-start; gap:10px; font-size:.82rem; color:var(--text-faint); }
 .checkbox-row input{ margin-top:3px; }
 
+.check-group{ display:flex; flex-wrap:wrap; gap:10px 20px; }
+.check-group label{ display:flex; align-items:center; gap:8px; font-size:.92rem; text-transform:none; letter-spacing:0; color:var(--text-dim); cursor:pointer; }
+.check-group input{ accent-color:var(--accent); width:16px; height:16px; }
+
 /* ---------- Table (prices) ---------- */
 .table-wrap{ overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); }
 table{ width:100%; border-collapse:collapse; min-width:720px; }

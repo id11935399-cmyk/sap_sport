@@ -18,6 +18,22 @@ const FORM_FIELD_LABELS = {
   company: "Компания",
   contact: "Контакт",
   message: "Сообщение",
+  email: "Email",
+  departure_city: "Город отправления",
+  women: "Женщины (кол-во, возраст)",
+  men: "Мужчины (кол-во, возраст)",
+  duration: "Длительность похода",
+  transfer: "Трансфер",
+  direction: "Направление / отдалённость",
+  accommodation: "Размещение",
+  craft: "Сплав-средство",
+  distance_per_day: "Км в день",
+  difficulty: "Уровень сложности",
+  food_prefs: "Кухня / ограничения",
+  drink_prefs: "Напитки",
+  alcohol: "Алкоголь",
+  entertainment: "Развлечения",
+  budget: "Бюджет мероприятия",
 };
 
 document.addEventListener("DOMContentLoaded", () => {
