@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Контакты — SPORT_FAST_SPLAV</title>
-<meta name="description" content="Контакты организатора сплавов на байдарках по Москве и Подмосковью: телефон, email, Telegram, соцсети.">
+<title>Галерея — сплавы на байдарках | SPORT_FAST_SPLAV</title>
+<meta name="description" content="Фотографии со сплавов на байдарках по Москве и Подмосковью: Нерская река, Серебряный Бор, Живописный мост, Архангельское, корпоративные выходы.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%232be9dc%22/></svg>">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header class="site-header">
+<header class="site-header transparent">
   <div class="container">
     <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="18" fill="#04110f"/><path d="M14 30C18 14 26 14 30 26" stroke="#2be9dc" stroke-width="4" stroke-linecap="round"/><path d="M50 30C46 14 38 14 34 26" stroke="#2be9dc" stroke-width="4" stroke-linecap="round"/><circle cx="23" cy="35" r="3" fill="#f0b64c"/><circle cx="41" cy="35" r="3" fill="#f0b64c"/><path d="M17 44 21 49 26 43 31 50 36 43 41 49 46 43 50 48" stroke="#2be9dc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>SPORT<span>_FAST_SPLAV</span></a>
     <nav class="nav-desktop">
@@ -18,9 +18,9 @@
       <a href="routes/nerskaya.html">Река Нерская</a>
       <a href="corporate.html">Корпоративам</a>
       <a href="prices.html">Цены</a>
-      <a href="gallery.html">Галерея</a>
+      <a href="gallery.html" class="active">Галерея</a>
       <a href="about.html">О нас</a>
-      <a href="contacts.html" class="active">Контакты</a>
+      <a href="contacts.html">Контакты</a>
     </nav>
     <div class="header-actions">
       <a href="booking.html" class="btn btn-primary btn-sm">Забронировать</a>
@@ -43,94 +43,60 @@
 
 <main>
 
-  <div class="container breadcrumb">
-    <a href="index.html">Главная</a><span class="sep">/</span>Контакты
-  </div>
-
-  <section class="hero hero-sm">
-    <div class="hero-bg"></div>
+  <section class="hero-cinematic" style="min-height:56vh;">
+    <div class="hero-media"><img src="img/gallery/night-towers.jpg" alt="Ночной город с воды во время сплава" loading="eager"></div>
+    <div class="hero-scrim"></div>
     <div class="container hero-content">
-      <span class="hero-tag">Контакты</span>
-      <h1>Свяжитесь с нами</h1>
-      <p class="lead">Вопросы по маршрутам, бронированию или корпоративным заявкам — пишите любым удобным способом.</p>
+      <span class="hero-tag">Фото со сплавов</span>
+      <h1>Галерея</h1>
+      <p class="lead">Кадры с разных маршрутов — от городских вечерних выходов до двухдневной экспедиции по Нерской и корпоративных сплавов.</p>
     </div>
   </section>
 
+  <div class="container breadcrumb">
+    <a href="index.html">Главная</a><span class="sep">/</span>Галерея
+  </div>
+
   <section class="section">
-    <div class="container two-col">
-      <div>
-        <span class="eyebrow">Способы связи</span>
-        <h2 style="margin-bottom:28px;">Мы на связи каждый день</h2>
+    <div class="container">
+      <div class="bento" style="grid-template-columns:repeat(3,1fr);">
+        <div class="media media-square" data-reveal><img src="img/gallery/sunrise-group.jpg" alt="Группа на байдарках на рассвете"></div>
+        <div class="media media-square" data-reveal><img src="img/routes/zhivopisny-most/night.jpg" alt="Живописный мост ночью"></div>
+        <div class="media media-square" data-reveal><img src="img/gallery/water-lily.jpg" alt="Кувшинки на воде"></div>
 
-        <div class="grid grid-2" style="gap:18px;">
-          <div class="card">
-            <div class="card-body">
-              <h3 style="font-size:1.05rem;">Телефон</h3>
-              <p><a href="tel:+79689896996" style="color:var(--accent);">+7 968 989-69-96</a></p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h3 style="font-size:1.05rem;">Email</h3>
-              <p><a href="mailto:info@nightsplav.ru" style="color:var(--accent);">info@nightsplav.ru</a></p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h3 style="font-size:1.05rem;">Telegram — основная группа</h3>
-              <p><a href="https://t.me/pro_sup" target="_blank" rel="noopener" style="color:var(--accent);">t.me/pro_sup</a></p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h3 style="font-size:1.05rem;">Соцсети</h3>
-              <div class="social-row" style="margin-top:4px;">
-                <a href="https://t.me/pro_sup" aria-label="Telegram" target="_blank" rel="noopener">TG</a>
-                <a href="#" aria-label="Instagram">IG</a>
-                <a href="#" aria-label="VK">VK</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="media media-square" data-reveal><img src="img/routes/nerskaya/toast.jpg" alt="Отдых у костра на Нерской"></div>
+        <div class="media media-square" data-reveal><img src="img/routes/serebryany-bor/hero.jpg" alt="Серебряный Бор на закате"></div>
+        <div class="media media-square" data-reveal><img src="img/gallery/lily-detail.jpg" alt="Кувшинки крупным планом"></div>
 
-        <p class="lead" style="margin-top:28px;">Отвечаем в течение дня. Для корпоративных заявок — отдельная форма на странице <a href="corporate.html">«Корпоративам»</a>.</p>
-        <p class="field-hint" style="margin-top:14px;">Больше фото и видео со сплавов — в нашем контент-канале <a href="https://t.me/splav_supboard" target="_blank" rel="noopener" style="color:var(--accent);">@splav_supboard</a>.</p>
-      </div>
+        <div class="media media-square" data-reveal><img src="img/routes/arkhangelskoye/hero.jpg" alt="Архангельское, узкая протока"></div>
+        <div class="media media-square" data-reveal><img src="img/routes/zhivopisny-most/day-kayak.jpg" alt="Байдарка у Живописного моста"></div>
+        <div class="media media-square" data-reveal><img src="img/routes/nerskaya/kayaks-shore.jpg" alt="Байдарки на берегу"></div>
 
-      <div>
-        <span class="eyebrow">Напишите нам</span>
-        <h2 style="margin-bottom:28px;">Быстрый вопрос</h2>
-        <form class="form" data-form data-form-name="Обратная связь">
-          <div class="field">
-            <label for="c-name">Имя</label>
-            <input type="text" id="c-name" name="name" required autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="c-contact">Телефон или Telegram</label>
-            <input type="text" id="c-contact" name="contact" required>
-          </div>
-          <div class="field">
-            <label for="c-message">Сообщение</label>
-            <textarea id="c-message" name="message" required placeholder="Ваш вопрос"></textarea>
-          </div>
-          <label class="checkbox-row">
-            <input type="checkbox" required>
-            Согласен(-на) с <a href="legal/privacy.html">политикой обработки персональных данных</a>
-          </label>
-          <div>
-            <button type="submit" class="btn btn-primary">Отправить сообщение</button>
-          </div>
-          <div class="form-success">Сообщение отправлено. Ответим в течение дня.</div>
-        </form>
+        <div class="media media-square" data-reveal><img src="img/routes/serebryany-bor/night-hero.jpg" alt="Серебряный Бор ночью"></div>
+        <div class="media media-square" data-reveal><img src="img/routes/arkhangelskoye/night-hero.jpg" alt="Архангельское ночью"></div>
+        <div class="media media-square" data-reveal><img src="img/routes/zhivopisny-most/group-dock.jpg" alt="Компания друзей на причале"></div>
+
+        <div class="media media-square" data-reveal><img src="img/corporate/hero.jpg" alt="Корпоративный сплав на байдарках"></div>
+        <div class="media media-square" data-reveal><img src="img/routes/serebryany-bor/secondary.jpg" alt="Сплав по Серебряному Бору"></div>
+        <div class="media media-square" data-reveal><img src="img/routes/arkhangelskoye/secondary.jpg" alt="Группа на байдарке в узкой протоке"></div>
+
+        <div class="media media-square" data-reveal><img src="img/routes/zhivopisny-most/day-kayak-2.jpg" alt="Сплав на байдарках у Живописного моста"></div>
+        <div class="media media-square" data-reveal><img src="img/corporate/secondary.jpg" alt="Большая группа в жилетах, корпоративный выход"></div>
+        <div class="media media-square" data-reveal><img src="img/routes/arkhangelskoye/night-secondary.jpg" alt="Ночной сплав у Архангельского"></div>
       </div>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
-      <span class="eyebrow">География</span>
-      <h2 style="max-width:700px;">Работаем в Москве и Подмосковье</h2>
-      <div class="ph ph-wide" style="margin-top:28px;"><span class="ph-label">Карта точек старта</span></div>
+      <div class="cta-band">
+        <span class="eyebrow" style="justify-content:center;">Хотите так же?</span>
+        <h2>Выберите маршрут</h2>
+        <div class="cta-row">
+          <a href="routes/index.html" class="btn btn-primary">Смотреть маршруты</a>
+          <a href="booking.html" class="btn btn-ghost">Забронировать прокат</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -143,7 +109,7 @@
         <a href="index.html" class="logo mb-0"><span class="logo-mark"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="18" fill="#04110f"/><path d="M14 30C18 14 26 14 30 26" stroke="#2be9dc" stroke-width="4" stroke-linecap="round"/><path d="M50 30C46 14 38 14 34 26" stroke="#2be9dc" stroke-width="4" stroke-linecap="round"/><circle cx="23" cy="35" r="3" fill="#f0b64c"/><circle cx="41" cy="35" r="3" fill="#f0b64c"/><path d="M17 44 21 49 26 43 31 50 36 43 41 49 46 43 50 48" stroke="#2be9dc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>SPORT<span>_FAST_SPLAV</span></a>
         <p class="text-dim" style="margin-top:16px;max-width:280px;">Групповые сплавы на байдарках по Москве и Подмосковью — с сопровождением технического специалиста и вниманием к безопасности на воде.</p>
         <div class="social-row" style="margin-top:18px;">
-          <a href="#" aria-label="Telegram">TG</a>
+          <a href="https://t.me/pro_sup" aria-label="Telegram" target="_blank" rel="noopener">TG</a>
           <a href="#" aria-label="Instagram">IG</a>
           <a href="#" aria-label="VK">VK</a>
         </div>
@@ -154,7 +120,6 @@
           <li><a href="routes/nerskaya.html">Нерская река, 2 дня</a></li>
           <li><a href="routes/serebryany-bor.html">Серебряный Бор</a></li>
           <li><a href="routes/arkhangelskoye.html">Архангельское</a></li>
-          <li><a href="routes/night-photo-tour.html">Ночной фототур</a></li>
           <li><a href="rivers.html">Карта рек Подмосковья →</a></li>
           <li><a href="routes/index.html">Все маршруты →</a></li>
         </ul>
@@ -164,6 +129,7 @@
         <ul>
           <li><a href="about.html">О нас</a></li>
           <li><a href="corporate.html">Корпоративам</a></li>
+          <li><a href="gallery.html">Галерея</a></li>
           <li><a href="reviews.html">Отзывы</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
