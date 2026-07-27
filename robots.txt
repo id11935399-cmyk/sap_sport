@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://id11935399-cmyk.github.io/sap_sport/sitemap.xml
